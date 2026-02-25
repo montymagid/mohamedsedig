@@ -1,427 +1,359 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>دعوة زفاف محمد وحسناء</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #0f0f0f;
-            min-height: 100vh;
-            padding: 0;
-            margin: 0;
-        }
+:root{
+  --rose:  #9B3A5A;
+  --rose2: #C05878;
+  --gold:  #D4A853;
+  --gold2: #F0C97A;
+  --cream: #FDF6EE;
+  --warm:  #F8EDD8;
+  --deep:  #1C0A14;
+  --text:  #3A0E22;
+  --muted: #7A4A5A;
+}
 
-        .container {
-            max-width: 100%;
-            width: 100%;
-            min-height: 100vh;
-            background: linear-gradient(to bottom, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            position: relative;
-            overflow: hidden;
-        }
+html,body{
+  min-height:100vh;
+  background:radial-gradient(ellipse at 30% 0%,#3b1030 0%,#1a0818 40%,#0d0510 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Amiri',serif;
+  overflow-x:hidden;
+}
 
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveBackground 20s linear infinite;
-        }
+#cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
 
-        @keyframes moveBackground {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
+.wrap{position:relative;z-index:2;width:100%;max-width:520px;padding:16px}
 
-        .content {
-            position: relative;
-            z-index: 1;
-            padding: 30px 20px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
+.card{
+  background:linear-gradient(175deg,#fdf0e8 0%,#fae4d0 35%,#f7dcc5 65%,#f2d4b8 100%);
+  border-radius:6px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 0 0 1px rgba(180,100,60,.2),0 8px 40px rgba(0,0,0,.55),0 2px 8px rgba(0,0,0,.3);
+  opacity:0;
+  transform:scale(.96) translateY(12px);
+  transition:opacity 1.1s ease,transform 1.1s ease;
+}
+.card.visible{opacity:1;transform:scale(1) translateY(0)}
 
-        .profile-section {
-            text-align: center;
-            margin-bottom: 30px;
-            animation: fadeInDown 1s ease;
-        }
+.card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 55% at 50% 50%,rgba(155,58,90,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+/* corners */
+.corners svg{position:absolute;width:90px;height:90px}
+.corners .tl{top:0;right:0}
+.corners .tr{top:0;left:0;transform:scaleX(-1)}
+.corners .bl{bottom:0;right:0;transform:scaleY(-1)}
+.corners .br{bottom:0;left:0;transform:scale(-1,-1)}
 
-        .profile-img-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
+/* petal strip */
+.petal-strip{
+  width:100%;height:44px;
+  display:flex;align-items:center;justify-content:center;gap:6px;padding:0 16px;
+}
+.petal-strip span{
+  font-size:22px;animation:sway 3s ease-in-out infinite;
+  display:inline-block;transform-origin:bottom center;
+}
+.petal-strip span:nth-child(even){animation-delay:.5s;font-size:18px;opacity:.7}
+.petal-strip span:nth-child(3n){animation-delay:1s;font-size:14px;opacity:.55}
+@keyframes sway{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
 
-        .profile-img-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, #00d4ff, #7b2ff7, #f107a3, #00d4ff);
-            background-size: 300% 300%;
-            border-radius: 50%;
-            animation: gradientRotate 3s ease infinite;
-            z-index: -1;
-        }
+.body{padding:10px 32px 24px;position:relative;z-index:1}
 
-        @keyframes gradientRotate {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
+.div{display:flex;align-items:center;gap:10px;margin:14px 0}
+.div-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(155,58,90,.4),transparent)}
+.div-icon{color:var(--rose);font-size:13px;letter-spacing:4px}
 
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #1a1a2e;
-            display: block;
-        }
+.bismillah{
+  text-align:center;
+  font-family:'Scheherazade New',serif;
+  font-size:26px;font-weight:700;
+  color:var(--rose);
+  text-shadow:0 1px 2px rgba(155,58,90,.2);
+  line-height:1.4;
+  animation:fadeSlide .9s ease both;
+}
 
-        .name {
-            font-size: 32px;
-            font-weight: bold;
-            color: #ffffff;
-            margin-bottom: 8px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            text-align: center;
-        }
+.title{
+  text-align:center;font-size:16px;letter-spacing:4px;
+  color:var(--muted);font-weight:400;
+  animation:fadeSlide .9s ease .15s both;
+}
 
-        .position {
-            font-size: 16px;
-            color: #00d4ff;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            text-align: center;
-        }
+.families{text-align:center;animation:fadeSlide .9s ease .3s both}
+.fam-label{font-size:15px;color:var(--rose2);margin-bottom:10px}
+.fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px}
+.fam-name{
+  font-size:14.5px;color:var(--text);line-height:1.7;
+  padding:4px 8px;border-bottom:1px solid rgba(155,58,90,.12);
+}
+.fam-name::before{content:'◈';font-size:9px;color:var(--gold);margin-left:5px;vertical-align:middle}
 
-        .info-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 25px;
-            animation: fadeInUp 1s ease 0.2s backwards;
-        }
+.couple{text-align:center;animation:fadeSlide .9s ease .45s both}
+.couple-label{font-size:15px;color:var(--rose2);margin-bottom:16px}
+.names-row{display:flex;align-items:center;justify-content:center;gap:16px}
+.name-box{text-align:center}
+.name-role{font-size:12px;letter-spacing:1px;color:var(--gold);margin-bottom:4px}
+.name-ar{
+  font-family:'Scheherazade New',serif;
+  font-size:34px;font-weight:700;
+  color:var(--rose);line-height:1.1;
+  text-shadow:0 2px 8px rgba(155,58,90,.25);
+}
+.heart{
+  font-size:30px;color:var(--rose2);
+  animation:hbeat 1.4s ease-in-out infinite;
+  text-shadow:0 2px 10px rgba(192,88,120,.35);
+  margin-bottom:4px;
+}
+@keyframes hbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.2)}28%{transform:scale(1)}42%{transform:scale(1.15)}56%{transform:scale(1)}}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.details{animation:fadeSlide .9s ease .6s both}
+.detail{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:11px 14px;border-radius:4px;margin:4px 0;
+  background:rgba(155,58,90,.045);
+  border-right:3px solid transparent;transition:all .3s;
+}
+.detail:hover{background:rgba(155,58,90,.09);border-right-color:var(--rose2)}
+.detail-ico{font-size:20px;min-width:28px;text-align:center;margin-top:2px}
+.detail-lbl{font-size:11.5px;letter-spacing:1px;color:var(--gold);margin-bottom:2px}
+.detail-val{font-size:16px;color:var(--text);line-height:1.65}
+.detail-val strong{color:var(--rose)}
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin: 15px 0;
-            color: #e0e0e0;
-            font-size: 14px;
-            text-align: justify;
-        }
+.map-btn{
+  display:inline-flex;align-items:center;gap:7px;margin-top:9px;
+  background:linear-gradient(135deg,var(--rose),var(--rose2));
+  color:#fff;text-decoration:none;padding:8px 18px;border-radius:30px;
+  font-family:'Amiri',serif;font-size:14.5px;font-weight:700;
+  box-shadow:0 4px 14px rgba(155,58,90,.35);transition:all .3s;
+}
+.map-btn:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(155,58,90,.5)}
 
-        .contact-item svg {
-            width: 20px;
-            height: 20px;
-            margin-right: 12px;
-            fill: #00d4ff;
-            flex-shrink: 0;
-        }
+.closing{text-align:center;animation:fadeSlide .9s ease .75s both}
+.closing-text{
+  font-family:'Scheherazade New',serif;font-size:19px;
+  color:var(--rose);line-height:2.1;
+  text-shadow:0 1px 3px rgba(155,58,90,.15);
+}
 
-        .about-section {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 25px;
-            animation: fadeInUp 1s ease 0.4s backwards;
-        }
+.bot-roses{
+  text-align:center;padding:10px 0 14px;
+  font-size:22px;letter-spacing:6px;color:var(--rose2);opacity:.75;
+}
 
-        .about-section h3 {
-            color: #00d4ff;
-            margin-bottom: 15px;
-            font-size: 20px;
-            text-align: center;
-        }
+@keyframes fadeSlide{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-        .about-section p {
-            color: #e0e0e0;
-            line-height: 1.8;
-            font-size: 14px;
-            text-align: justify;
-        }
-
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            animation: fadeInUp 1s ease 0.6s backwards;
-        }
-
-        .btn {
-            padding: 16px 24px;
-            border: none;
-            border-radius: 15px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:active::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn svg {
-            width: 22px;
-            height: 22px;
-            fill: white;
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-cv {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-cv:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.6);
-        }
-
-        .btn-email {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
-        }
-
-        .btn-email:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(245, 87, 108, 0.6);
-        }
-
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
-        }
-
-        .btn-whatsapp:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
-        }
-
-        @media (max-width: 480px) {
-            .content {
-                padding: 20px 15px;
-            }
-
-            .name {
-                font-size: 28px;
-            }
-
-            .position {
-                font-size: 14px;
-            }
-
-            .profile-img {
-                width: 120px;
-                height: 120px;
-            }
-
-            .info-card, .about-section {
-                padding: 20px;
-            }
-
-            .btn {
-                padding: 14px 20px;
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .name {
-                font-size: 24px;
-            }
-
-            .contact-item {
-                font-size: 13px;
-            }
-
-            .about-section p {
-                font-size: 13px;
-            }
-        }
-    </style>
+@media(max-width:420px){
+  .body{padding:8px 20px 20px}
+  .name-ar{font-size:28px}
+  .fam-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <div class="profile-section">
-                <div class="profile-img-wrapper">
-                    <img src="https://via.placeholder.com/140" alt="Profile Picture" class="profile-img" id="profileImg">
-                </div>
-                <h1 class="name" id="userName">Your Name</h1>
-                <p class="position" id="userPosition">Your Position</p>
-            </div>
 
-            <div class="info-card">
-                <div class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                    <span id="userEmail">your.email@example.com</span>
-                </div>
-                <div class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                    </svg>
-                    <span id="userPhone">+1 234 567 890</span>
-                </div>
-            </div>
+<canvas id="cvs"></canvas>
 
-            <div class="about-section">
-                <h3>About Me</h3>
-                <p id="userAbout">
-                    I am a passionate professional with expertise in my field. I love creating innovative solutions and working on challenging projects that make a real difference. With years of experience and dedication, I strive to deliver excellence in everything I do. Let's connect and collaborate on something amazing together!
-                </p>
-            </div>
+<div class="wrap">
+<div class="card" id="card">
 
-            <div class="buttons">
-                <a href="#" class="btn btn-cv" id="downloadCV">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                    </svg>
-                    <span>Download My CV</span>
-                </a>
-                <a href="#" class="btn btn-email" id="emailBtn">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                    <span>Email Me</span>
-                </a>
-                <a href="#" class="btn btn-whatsapp" id="whatsappBtn">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                    </svg>
-                    <span>WhatsApp Me</span>
-                </a>
-            </div>
-        </div>
+  <div class="corners">
+    <svg class="tl" viewBox="0 0 90 90" fill="none">
+      <path d="M88 2H2V88" stroke="#C05878" stroke-width="1.2" opacity=".5"/>
+      <path d="M80 2H2V80" stroke="#C05878" stroke-width=".6" opacity=".25"/>
+      <circle cx="2" cy="2" r="3.5" fill="#C05878" opacity=".6"/>
+      <circle cx="88" cy="2" r="2" fill="#D4A853" opacity=".5"/>
+      <circle cx="2" cy="88" r="2" fill="#D4A853" opacity=".5"/>
+      <path d="M26 2 C30,-4 38,-4 38,2 C38,8 30,8 26,14 C22,8 14,8 14,2 C14,-4 22,-4 26,2Z" fill="#C05878" opacity=".22"/>
+      <path d="M2 26 C-4,22 -4,14 2,14 C8,14 8,22 14,22 C8,22 8,30 2,30 C-4,30 -4,22 2,26Z" fill="#C05878" opacity=".22"/>
+      <path d="M50,2 L55,7 L50,12 L45,7Z" fill="#D4A853" opacity=".3"/>
+      <path d="M65,2 L70,7 L65,12 L60,7Z" fill="#D4A853" opacity=".2"/>
+    </svg>
+    <svg class="tr" viewBox="0 0 90 90" fill="none">
+      <path d="M88 2H2V88" stroke="#C05878" stroke-width="1.2" opacity=".5"/>
+      <path d="M80 2H2V80" stroke="#C05878" stroke-width=".6" opacity=".25"/>
+      <circle cx="2" cy="2" r="3.5" fill="#C05878" opacity=".6"/>
+      <circle cx="88" cy="2" r="2" fill="#D4A853" opacity=".5"/>
+      <circle cx="2" cy="88" r="2" fill="#D4A853" opacity=".5"/>
+      <path d="M26 2 C30,-4 38,-4 38,2 C38,8 30,8 26,14 C22,8 14,8 14,2 C14,-4 22,-4 26,2Z" fill="#C05878" opacity=".22"/>
+      <path d="M2 26 C-4,22 -4,14 2,14 C8,14 8,22 14,22 C8,22 8,30 2,30 C-4,30 -4,22 2,26Z" fill="#C05878" opacity=".22"/>
+      <path d="M50,2 L55,7 L50,12 L45,7Z" fill="#D4A853" opacity=".3"/>
+      <path d="M65,2 L70,7 L65,12 L60,7Z" fill="#D4A853" opacity=".2"/>
+    </svg>
+    <svg class="bl" viewBox="0 0 90 90" fill="none">
+      <path d="M88 2H2V88" stroke="#C05878" stroke-width="1.2" opacity=".5"/>
+      <path d="M80 2H2V80" stroke="#C05878" stroke-width=".6" opacity=".25"/>
+      <circle cx="2" cy="2" r="3.5" fill="#C05878" opacity=".6"/>
+      <circle cx="88" cy="2" r="2" fill="#D4A853" opacity=".5"/>
+      <circle cx="2" cy="88" r="2" fill="#D4A853" opacity=".5"/>
+      <path d="M26 2 C30,-4 38,-4 38,2 C38,8 30,8 26,14 C22,8 14,8 14,2 C14,-4 22,-4 26,2Z" fill="#C05878" opacity=".22"/>
+      <path d="M2 26 C-4,22 -4,14 2,14 C8,14 8,22 14,22 C8,22 8,30 2,30 C-4,30 -4,22 2,26Z" fill="#C05878" opacity=".22"/>
+      <path d="M50,2 L55,7 L50,12 L45,7Z" fill="#D4A853" opacity=".3"/>
+      <path d="M65,2 L70,7 L65,12 L60,7Z" fill="#D4A853" opacity=".2"/>
+    </svg>
+    <svg class="br" viewBox="0 0 90 90" fill="none">
+      <path d="M88 2H2V88" stroke="#C05878" stroke-width="1.2" opacity=".5"/>
+      <path d="M80 2H2V80" stroke="#C05878" stroke-width=".6" opacity=".25"/>
+      <circle cx="2" cy="2" r="3.5" fill="#C05878" opacity=".6"/>
+      <circle cx="88" cy="2" r="2" fill="#D4A853" opacity=".5"/>
+      <circle cx="2" cy="88" r="2" fill="#D4A853" opacity=".5"/>
+      <path d="M26 2 C30,-4 38,-4 38,2 C38,8 30,8 26,14 C22,8 14,8 14,2 C14,-4 22,-4 26,2Z" fill="#C05878" opacity=".22"/>
+      <path d="M2 26 C-4,22 -4,14 2,14 C8,14 8,22 14,22 C8,22 8,30 2,30 C-4,30 -4,22 2,26Z" fill="#C05878" opacity=".22"/>
+      <path d="M50,2 L55,7 L50,12 L45,7Z" fill="#D4A853" opacity=".3"/>
+      <path d="M65,2 L70,7 L65,12 L60,7Z" fill="#D4A853" opacity=".2"/>
+    </svg>
+  </div>
+
+  <div class="petal-strip">
+    <span>🌹</span><span>✿</span><span>🌸</span><span>✦</span>
+    <span>🌹</span><span>✿</span><span>🌸</span><span>✦</span>
+    <span>🌹</span><span>✿</span><span>🌸</span>
+  </div>
+
+  <div class="body">
+
+    <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="div"><div class="div-line"></div><div class="div-icon">✦ ✦ ✦</div><div class="div-line"></div></div>
+    <div class="title">دعوة لحضور حفل زفاف</div>
+    <div class="div"><div class="div-line"></div><div class="div-icon">✦</div><div class="div-line"></div></div>
+
+    <div class="families">
+      <div class="fam-label">يتشرف كلٌ من</div>
+      <div class="fam-grid">
+        <div class="fam-name">آل صديق حامد محمد</div>
+        <div class="fam-name">آل سيد أحمد حسن أبو السعود</div>
+        <div class="fam-name">آل محمد صالحين خيري</div>
+        <div class="fam-name">آل إدريس حسن إدريس قرنجيل</div>
+      </div>
     </div>
 
-    <script>
-        // Edit these variables with your information
-        const userData = {
-            name: "Mohamed Sedig",
-            position: "Lead Geologist",
-            email: "mohamed_seddig@yahoo.com",
-            phone: "+9665530206539",
-            about: "I am an accomplished Senior Exploration Geologist with over 12 years of extensive experience in mineral prospecting and exploration within the Arabian Nubian Shield and the Arabian Shield, specializing in gold, base metals, and industrial minerals. My expertise includes geological mapping, geochemical sampling, RC and DD drilling, project management, and open-pit mining. I possess exceptional skills in GIS, QA/QC, data validation, and resource estimation, supported by a robust background in 3D modeling and geological data interpretation. With a deep understanding of key mineralization styles such as Gossan, VMS, Orogenic, and Porphyry systems, I effectively lead exploration programs in alignment with international standards (JORC) while adhering to Saudi mining regulations. My ability to manage multidisciplinary teams drives successful resource development projects, ensuring excellence in all phases of exploration.",
-            cvUrl: "Mohamed Sedig_CV-1.pdf",
-            profileImage: "./mohamed.jpg"
-        };
+    <div class="div"><div class="div-line"></div><div class="div-icon">✦ ✦ ✦</div><div class="div-line"></div></div>
 
-        // Update the page with user data
-        document.getElementById('userName').textContent = userData.name;
-        document.getElementById('userPosition').textContent = userData.position;
-        document.getElementById('userEmail').textContent = userData.email;
-        document.getElementById('userPhone').textContent = userData.phone;
-        document.getElementById('userAbout').textContent = userData.about;
-        document.getElementById('profileImg').src = userData.profileImage;
+    <div class="couple">
+      <div class="couple-label">بدعوتكم لحضور حفل زفاف أبنائهم</div>
+      <div class="names-row">
+        <div class="name-box">
+          <div class="name-role">المهندس</div>
+          <div class="name-ar">محمد</div>
+        </div>
+        <div><div class="heart">♡</div></div>
+        <div class="name-box">
+          <div class="name-role">الدكتورة</div>
+          <div class="name-ar">حسناء</div>
+        </div>
+      </div>
+    </div>
 
-        // Download CV button
-        document.getElementById('downloadCV').href = userData.cvUrl;
-        document.getElementById('downloadCV').download = 'CV.pdf';
+    <div class="div"><div class="div-line"></div><div class="div-icon">✦ ✦ ✦</div><div class="div-line"></div></div>
 
-        // Email button
-        document.getElementById('emailBtn').href = `mailto:${userData.email}`;
+    <div class="details">
+      <div class="detail">
+        <div class="detail-ico">📍</div>
+        <div>
+          <div class="detail-lbl">المكان</div>
+          <div class="detail-val"><strong>قاعة زفاف — الدمام</strong></div>
+          <a class="map-btn" href="https://maps.app.goo.gl/fStGn7LoCnCiMWqZ6" target="_blank">🗺 اضغط للموقع على الخريطة</a>
+        </div>
+      </div>
+      <div class="detail">
+        <div class="detail-ico">📅</div>
+        <div>
+          <div class="detail-lbl">التاريخ</div>
+          <div class="detail-val"><strong>ثالث أيام عيد الفطر المبارك</strong><br>الأحد &nbsp;٢٢ / ٣ / ٢٠٢٣ م</div>
+        </div>
+      </div>
+      <div class="detail">
+        <div class="detail-ico">🕙</div>
+        <div>
+          <div class="detail-lbl">الموعد</div>
+          <div class="detail-val"><strong>الساعة ١٠:٠٠ مساءً</strong></div>
+        </div>
+      </div>
+      <div class="detail">
+        <div class="detail-ico">🍽️</div>
+        <div>
+          <div class="detail-lbl">المناسبة</div>
+          <div class="detail-val">لتناول طعام العشاء ومشاركة الفرحة</div>
+        </div>
+      </div>
+    </div>
 
-        // WhatsApp button
-        const whatsappNumber = userData.phone.replace(/[^0-9]/g, '');
-        document.getElementById('whatsappBtn').href = `https://wa.me/${whatsappNumber}`;
+    <div class="div"><div class="div-line"></div><div class="div-icon">✦ ✦ ✦</div><div class="div-line"></div></div>
 
-        // Add ripple effect on button click
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.classList.add('ripple');
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 600);
-            });
-        });
-    </script>
+    <div class="closing">
+      <div class="closing-text">
+        حضوركم الكريم يشرّفنا ويسعدنا<br>
+        نسأل الله أن يجمعنا على الخير والسرور
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bot-roses">🌹 ✦ 🌸 ✦ 🌹 ✦ 🌸 ✦ 🌹</div>
+
+</div>
+</div>
+
+<script>
+const cvs=document.getElementById('cvs');
+const ctx=cvs.getContext('2d');
+function resize(){cvs.width=window.innerWidth;cvs.height=window.innerHeight}
+resize();window.addEventListener('resize',resize);
+const COLS=['rgba(192,88,120,','rgba(212,168,83,','rgba(155,58,90,','rgba(240,201,122,'];
+class Petal{
+  constructor(){this.reset(true)}
+  reset(init){
+    this.x=Math.random()*cvs.width;
+    this.y=init?Math.random()*cvs.height:-20;
+    this.r=Math.random()*6+3;
+    this.vx=(Math.random()-.5)*.6;
+    this.vy=Math.random()*.8+.4;
+    this.rot=Math.random()*Math.PI*2;
+    this.rspd=(Math.random()-.5)*.03;
+    this.alpha=Math.random()*.5+.15;
+    this.col=COLS[Math.floor(Math.random()*COLS.length)];
+    this.type=Math.random()>.4?'petal':'spark';
+    this.phase=Math.random()*Math.PI*2;
+  }
+  update(){
+    this.phase+=.025;
+    this.x+=this.vx+Math.sin(this.phase)*.4;
+    this.y+=this.vy;
+    this.rot+=this.rspd;
+    if(this.y>cvs.height+20)this.reset(false);
+  }
+  draw(){
+    ctx.save();ctx.globalAlpha=this.alpha;
+    ctx.translate(this.x,this.y);ctx.rotate(this.rot);
+    if(this.type==='petal'){
+      ctx.fillStyle=this.col+'.7)';
+      ctx.beginPath();ctx.ellipse(0,0,this.r,this.r*1.7,0,0,Math.PI*2);ctx.fill();
+      ctx.strokeStyle=this.col+'.4)';ctx.lineWidth=.5;
+      ctx.beginPath();ctx.moveTo(0,-this.r*1.5);ctx.lineTo(0,this.r*1.5);ctx.stroke();
+    }else{
+      ctx.fillStyle=this.col+'.9)';
+      for(let i=0;i<4;i++){ctx.beginPath();ctx.ellipse(0,0,this.r*.25,this.r,0,i*Math.PI/2,(i+1)*Math.PI/2);ctx.fill();}
+    }
+    ctx.restore();
+  }
+}
+const petals=Array.from({length:55},()=>new Petal());
+function loop(){ctx.clearRect(0,0,cvs.width,cvs.height);petals.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
+loop();
+setTimeout(()=>document.getElementById('card').classList.add('visible'),120);
+</script>
 </body>
 </html>
